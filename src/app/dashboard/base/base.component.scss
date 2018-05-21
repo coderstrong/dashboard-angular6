@@ -1,0 +1,10 @@
+.nav-item{
+    .nav-link{
+        cursor: pointer;
+    }
+    .dropdown-toggle{
+        &::after{
+            display: none;
+        }
+    }
+}
