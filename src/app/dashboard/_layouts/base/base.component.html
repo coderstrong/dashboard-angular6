@@ -1,14 +1,6 @@
-<header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="/assets/img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">
-        <img class="navbar-brand-minimized" src="/assets/img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
-    </a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<app-header [fixed]="true" [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
+    [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}" [sidebarToggler]="'lg'"
+    [asideMenuToggler]="false" [mobileAsideMenuToggler]="false">
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
             <a class="nav-link" href="#">Dashboard</a>
@@ -20,9 +12,8 @@
             <a class="nav-link" href="#">Settings</a>
         </li>
     </ul>
-
-    <ul class="nav navbar-nav ml-auto mr-md-3">
-        <li ngbDropdown class="nav-item d-md-down-none">
+    <ul class="nav navbar-nav ml-auto">
+        <li ngbDropdown class="nav-item dropdown">
             <a ngbDropdownToggle class="nav-link">
                 <i class="icon-bell"></i>
                 <span class="badge badge-pill badge-danger">5</span>
@@ -45,10 +36,15 @@
         </li>
         <li class="nav-item d-md-down-none">
             <a class="nav-link" href="#">
+                <i class="icon-list"></i>
+            </a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link" href="#">
                 <i class="icon-location-pin"></i>
             </a>
         </li>
-        <li ngbDropdown class="nav-item dropdown">
+        <li ngbDropdown class="nav-item dropdown mr-2">
             <a ngbDropdownToggle class="nav-link">
                 <img class="img-avatar" src="/assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
             </a>
@@ -94,26 +90,46 @@
                     <i class="fa fa-lock"></i> Logout</a>
             </div>
         </li>
-        
     </ul>
-
-</header>
+</app-header>
 
 <div class="app-body">
 
-    <app-sidebar></app-sidebar>
+    <app-sidebar [fixed]="true" [display]="'lg'">
+        <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+        <app-sidebar-minimizer></app-sidebar-minimizer>
+    </app-sidebar>
 
-    <router-outlet></router-outlet>
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <app-breadcrumb></app-breadcrumb>
+            <!-- Breadcrumb Menu-->
+            <li class="breadcrumb-menu d-md-down-none">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <a class="btn" href="#">
+                        <i class="icon-speech"></i>
+                    </a>
+                    <a class="btn" [routerLink]="['/dashboard']">
+                        <i class="icon-graph"></i> &nbsp;Dashboard</a>
+                    <a class="btn" href="#">
+                        <i class="icon-settings"></i> &nbsp;Settings</a>
+                </div>
+            </li>
+        </ol>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /.container-fluid -->
+    </main>
 
 </div>
 
-<footer class="app-footer">
-    <div>
-        <a href="">UI</a>
-        <span>&copy; 2018 thaodev90.</span>
-    </div>
-    <div class="ml-auto">
-        <span>Powered by</span>
-        <a>CoreUI</a>
-    </div>
-</footer>
+<app-footer>
+    <span>
+        <a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
+    <span class="ml-auto">Powered by
+        <a href="https://coreui.io/angular">CoreUI for Angular</a>
+    </span>
+</app-footer>
