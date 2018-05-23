@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserModule } from './user/user.module';
 import { NotificationsModule } from './notifications/notifications.module';
-
+import { ErrorsModule } from './errors/errors.module';
+import { HttpService } from './core/services/http.service';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { NotificationsModule } from './notifications/notifications.module';
     AppRoutingModule,
     DashboardModule,
     UserModule,
-    NotificationsModule
+    NotificationsModule,
+    // ErrorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
