@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HttpService } from '../../core/services/http.service';
+import { AnimatemessageService } from '../../core/notifications/animatemessage.service';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +8,26 @@ import { HttpService } from '../../core/services/http.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private httpService: HttpService
+  constructor(private message: AnimatemessageService
   ) { }
 
   fireClientError() {
     // throw new Error('Client Error. Shit happens :)');
     // it is not defined, ups
-    // return it;
+    // return it.hnad;
+    this.message.showWarning('Error title', 'hello');
+    // return 5 / ix; // r is not defined === ReferenceError
   }
 
   fireServerError() {
-    this.httpService
-            .get('https://jsonplaceholder.typicode.com/1')
-            .subscribe();
+    this.message.showWarning('showWarning title', 'hello');
+    this.message.showError('showError title', 'hello');
+    this.message.showInfo('showInfo title', 'hello');
+    this.message.showSuccess('showSuccess title', 'hello');
   }
 
   ngOnInit() {
+
   }
 
 }

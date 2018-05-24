@@ -8,9 +8,8 @@
               <i class="icon-settings"></i>
             </button>
             <div ngbDropdownMenu>
-              <a class="dropdown-item" href="#" >Server Error</a>
-              <a class="dropdown-item" href="#" >Client Error</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <button class="dropdown-item" (click)="fireClientError()">Fire Error</button>
+              <button class="dropdown-item" (click)="fireServerError()">Server Error</button>
             </div>
           </div>
           <div class="text-value">9.823</div>

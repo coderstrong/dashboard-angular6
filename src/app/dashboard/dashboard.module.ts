@@ -11,6 +11,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { UserModule } from '../user/user.module';
+
 import {
   // AppAsideModule,
   AppBreadcrumbModule,
@@ -40,7 +43,8 @@ const routes: Routes = [
     AppFooterModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    NgbModule
+    NgbModule,
+    UserModule
   ],
   declarations: [
     BaseComponent,

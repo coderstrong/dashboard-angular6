@@ -1,6 +1,7 @@
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AnimatemessageService } from '../notifications/animatemessage.service';
 
 @Injectable()
 export class ErrorsHandler implements ErrorHandler {
@@ -13,18 +14,17 @@ export class ErrorsHandler implements ErrorHandler {
     handleError(error: Error | HttpErrorResponse) {
 
         const router = this.injector.get(Router);
-        // const notificationService = this.injector.get(NotificationService);
-
+        const animateMessageService = this.injector.get(AnimatemessageService);
         if (error instanceof HttpErrorResponse) {
             // Server or connection error happened
             if (!navigator.onLine) {
                 // Handle offline error
-                // return notificationService.notify('No Internet Connection');
                 console.log('No Internet Connection');
+                return animateMessageService.showError('No Internet Connection', 'Error');
             } else {
                 // Handle Http Error (error.status === 403, 404..)
-                // return notificationService.notify(`${error.status} - ${error.message}`);
                 console.log(`${error.status} - ${error.message}`);
+                return animateMessageService.showError(`${error.status} - ${error.message}`, 'Error');
             }
         } else {
             // Handle Client Error (Angular Error, ReferenceError...)

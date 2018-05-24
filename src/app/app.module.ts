@@ -2,15 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from '../config/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { UserModule } from './user/user.module';
-import { NotificationsModule } from './notifications/notifications.module';
-import { ErrorsModule } from './errors/errors.module';
-import { HttpService } from './core/services/http.service';
-import { HttpClient } from '@angular/common/http';
+import { ErrorsModule } from './core/errors/errors.module';
+import { NotificationsModule } from './core/notifications/notifications.module';
+import { AnimatemessageService } from './core/notifications/animatemessage.service';
+
+
 
 @NgModule({
   declarations: [
@@ -21,9 +22,8 @@ import { HttpClient } from '@angular/common/http';
     FormsModule,
     AppRoutingModule,
     DashboardModule,
-    UserModule,
-    NotificationsModule,
-    // ErrorsModule
+    ErrorsModule,
+    NotificationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,11 @@
 @import "../node_modules/simple-line-icons/scss/simple-line-icons";
 @import "../node_modules/@coreui/coreui/scss/coreui";
 
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+@import "../node_modules/ngx-toastr/toastr-bs4-alert";
+
 
 // If you want to add something do it here
 @import "scss/custom";
